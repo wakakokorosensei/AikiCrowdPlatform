@@ -1,0 +1,47 @@
+
+<div>
+  <h1><span class="label label-info">Listing Addresses</span></h1>
+</div>
+
+
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>Address type</th>
+    <th>Street</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+
+  <% current_user.addresses.each do |address| %>
+      <tr>
+        <td><%= address.address_type %></td>
+        <td><%= address.street %></td>
+
+        <td class="list_actions">
+          <%= link_to 'Edit', edit_address_path(address) %>
+          <%= link_to 'Destroy', address_path(address), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+
+
+</table>
+<!-- Split button -->
+<div class="btn-group">
+  <button type="button" class="btn btn-info">Action</button>
+  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><%= link_to 'Add Address ', new_address_path %></li>
+    <li><%= link_to 'Back to user profile', edit_user_registration_path %></li>
+  </ul>
+</div>
+<br>
+
+

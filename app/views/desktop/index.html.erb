@@ -1,0 +1,12 @@
+<h1>Crowdfunding Project Catalog</h1>
+
+<% @project.each do |project| %>
+
+    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+      <div class="thumbnail">
+        <img class="img-responsive" src="<%= image_url(project.short_image, class: 'list_image')%>"  alt="Imagen">
+        <h3><%= link_to project.name, project %></h3>
+        <%= sanitize(truncate(strip_tags(project.description), length: 20)) %>
+      </div>
+    </div>
+<% end %>

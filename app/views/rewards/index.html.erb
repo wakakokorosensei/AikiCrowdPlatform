@@ -1,0 +1,37 @@
+<% if notice %>
+    <p id="notice"><%= notice %></p>
+<% end %>
+
+<h1>Listing rewards</h1>
+
+
+
+
+<table class="table table-hover">
+	<thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+	</thead>
+  <tbody>
+  <% @project.rewards.each do |reward| %>
+   <tr>
+      <td><%= reward.name %></td>
+      <td><%=number_to_currency(reward.price) %></td>
+
+      <td class="list_actions">
+         <%= link_to 'Edit', edit_project_reward_path(@project, reward) %>
+         <%= link_to 'Destroy', project_reward_path(@project, reward), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+   </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Reward', new_project_reward_path %> |
+
+<%= link_to 'Back', projects_path %>

@@ -1,0 +1,29 @@
+<h1>Listing Updates</h1>
+
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>Preview</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+
+  <tbody>
+    <% @project.pages.updatepage.each do |page| %>
+      <tr>
+
+        <td><%= sanitize(truncate(strip_tags(page.content), length: 50)) %></td>
+
+        <td class="list_actions">
+            <%= link_to 'Edit', edit_project_page_path(@project, page) %>
+            <%= link_to 'Destroy', project_page_path(@project,page), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Update', new_project_page_path %> |
+<%= link_to 'Back to projects', projects_path %>

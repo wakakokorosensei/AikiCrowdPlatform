@@ -1,0 +1,55 @@
+
+
+
+
+<div class="col-md-7" id="content">
+  <div class="panel">
+    <div class="panel-heading" style="background-color:#111;color:#fff;">Top Stories</div>
+    <div class="panel-body">
+
+      <%= form_for([@project, @comment]) do |f| %>
+          <% if @comment.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+                <ul>
+                  <% @comment.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
+
+          <div class="form-group">
+            <%= f.label :content%>
+            <div>
+              <%= f.text_area :content, :rows => 10, class: 'form-control'%>
+            </div>
+          </div>
+
+
+          <div class="actions">
+            <%= f.submit %>
+          </div>
+      <% end %>
+
+      <% if @project.comments.size > 0 %>
+          <h2>Comments</h2>
+          <ul class="list-group">
+            <% for comment in @project.comments %>
+                <li class="list-group-item">
+                  <h3><%= comment.username%></h3>
+                  <p><%= comment.content %></p>
+                </li>
+            <% end %>
+          </ul>
+      <% end %>
+
+    </div><!--/panel-body-->
+  </div><!--/panel-->
+  <!--/end right column-->
+</div>
+
+
+
+

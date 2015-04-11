@@ -1,0 +1,175 @@
+<%= form_for ([@project, @reward, @address]), :html => {:class => "form-horizontal center"} do |address| %>
+
+
+    <div class="form-group">
+      <legend><h1>Addresses Information</h1></legend>
+    </div>
+
+
+    <% if @address.errors.any? %><h3>Select from address list</h3>
+        <div id="error_explanation">
+          <h2><%= pluralize(@contribution.errors.count, "error") %> prohibited this payment from being saved:</h2>
+
+          <ul>
+            <% @contribution.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <% if current_user.addresses.size > 0 %>
+        <h3>Select from list</h3>
+        <div class="form-group">
+          <%= address.label '  ', class: "col-sm-2 control-label" %><br>
+          <div class="col-sm-6">
+            <%= address.fields_for current_user.addresses do |a| %>
+                <%= a.select(:id, options_from_collection_for_select(current_user.addresses.where(address_type: 'shipping'), :id, :street), {:include_blank => 'Select from your list address'}, {class: 'form-control'}) %>
+            <% end %>
+          </div>
+        </div>
+    <% end %>
+
+
+    <h3>Add shipping and billing address</h3>
+
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Add Shipping address
+            </a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            <div class="form-group">
+              <%= address.label :street, class: "col-sm-2 control-label" %>
+              <div class="col-sm-6">
+                <%= address.text_field :street, class: "form-control"%>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= address.label :phone_number, class: "col-sm-2 control-label" %>
+              <div class="col-sm-6">
+                <%= address.text_field :phone_number, class: "form-control"%>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= address.label :zip_code, class: "col-sm-2 control-label" %>
+              <div class="col-sm-6">
+                <%= address.text_field :zip_code, class: "form-control"%>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= address.label :city, class: "col-sm-2 control-label" %>
+              <div class="col-sm-6">
+                <%= address.text_field :city, class: "form-control"%>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= address.label :state, class: "col-sm-2 control-label" %>
+              <div class="col-sm-6">
+                <%= address.text_field :state, class: "form-control"%>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= address.label :country, class: "col-sm-2 control-label" %>
+              <div class="col-sm-6">
+                <%= address.text_field :country, class: "form-control"%>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div>
+                <%= address.hidden_field :address_type , class: "form-control"  %>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <%= address.label 'Same for billing address', class: "col-sm-2 control-label" %>
+              <div class="col-sm-6">
+                <%= address.check_box :same_as_shipping_address %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+          <h4 class="panel-title">
+            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Add billing address
+            </a>
+          </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            <div class="form-group">
+              <%= address.label 'Street', class: "col-sm-2 control-label" %>
+              <div class="col-sm-6">
+                <%= address.text_field :billing_street, class: "form-control"%>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= address.label 'Phone number', class: "col-sm-2 control-label" %>
+              <div class="col-sm-6">
+                <%= address.text_field :billing_phone_number, class: "form-control"%>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= address.label 'Zip code', class: "col-sm-2 control-label" %>
+              <div class="col-sm-6">
+                <%= address.text_field :billing_zip_code, class: "form-control"%>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= address.label 'City', class: "col-sm-2 control-label" %>
+              <div class="col-sm-6">
+                <%= address.text_field :billing_city, class: "form-control"%>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= address.label 'State', class: "col-sm-2 control-label" %>
+              <div class="col-sm-6">
+                <%= address.text_field :billing_state, class: "form-control"%>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= address.label 'Country', class: "col-sm-2 control-label" %>
+              <div class="col-sm-6">
+                <%= address.text_field :billing_country, class: "form-control"%>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div>
+                <%= address.hidden_field :billing_address_type , class: "form-control"  %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-2">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+
+
+<% end %>

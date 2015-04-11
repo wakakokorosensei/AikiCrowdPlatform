@@ -1,0 +1,73 @@
+<div class="blog-header">
+  <h1 class="blog-title"> <%= @project.page.title %></h1>
+
+
+</div>
+
+<div class="row">
+
+  <div class="col-sm-8 blog-main">
+
+    <div class="blog-post">
+
+      <%=  sanitize(@project.page.content) %>
+
+    </div><!-- /.blog-post -->
+
+
+  </div><!-- /.blog-main -->
+
+  <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+    <div class="sidebar-module sidebar-module-inset">
+      <div class="thumbnail">
+        <h4>$3,594,701USD</h4>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+            60%
+          </div>
+
+        </div>
+
+      </div>  
+
+    </div>
+
+    <div class="sidebar-module">
+      <h4>SELECT A REWARD</h4>
+      <ol class="list-unstyled">
+        
+        <% @project.rewards.each do |reward| %>
+            <div class="thumbnail">
+            		<img data-src="3" alt="">
+            		<div class="caption">
+            			<h3><%= reward.name %></h3>
+                        <p>
+                            <%=reward.description %>
+                        </p>
+                        <p>
+                            <%=number_to_currency(reward.price) %>
+                        </p>
+                        <p>
+            				<a href="#" class="btn btn-primary">Action</a>
+            			</p>
+            		</div>
+            </div>
+        <% end %>
+
+      </ol>
+    </div>
+    <div class="sidebar-module">
+      <h4>Elsewhere</h4>
+      <ol class="list-unstyled">
+        <li><a href="#">GitHub</a></li>
+        <li><a href="#">Twitter</a></li>
+        <li><a href="#">Facebook</a></li>
+      </ol>
+    </div>
+  </div><!-- /.blog-sidebar -->
+
+</div><!-- /.row -->
+
+<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+
+</div>

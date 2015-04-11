@@ -1,0 +1,122 @@
+<%= form_for (@contribution), url: {action: 'continue_payment'} , :html => {:class => "form-horizontal center"} do |f| %>
+    <header><h1>          </h1></header>
+
+
+                <section id="reward_asigned">
+
+                  <div class="row">
+
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                      <div class="thumbnail">
+                        <img class="img-responsive" src="<%= image_url(@project.short_image, class: 'list_image')%>"  alt="Imagen">
+                        <div class="caption">
+                          <h3><%= @reward.name %></h3>
+                          <p>
+                            <%=@reward.description %>
+                          </p>
+                          <p>
+                            <%=number_to_currency(@reward.price) %>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                      <% if current_user.addresses.size > 0 %>
+                          <h3>Select address from list</h3>
+                          <div class="form-group">
+                            <%= f.label '  ', class: "col-sm-2 control-label" %><br>
+                            <div class="col-sm-6">
+                              <%= f.fields_for current_user.addresses do |a| %>
+                                  <%= a.select(:id, options_from_collection_for_select(current_user.addresses.where(address_type: 'shipping'), :id, :street), {:include_blank => 'Select from your list address'}, {class: 'form-control'}) %>
+                              <% end %>
+                            </div>
+                          </div>
+
+                      <%end%>
+
+                      <%= f.fields_for current_user do |person| %>
+                          <div class="form-group">
+                            <%= person.label :first_name, class: "col-sm-2 control-label" %>
+                            <div class="col-sm-6">
+                              <%= person.text_field :first_name, class: "form-control"%>
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <%= person.label :second_name, class: "col-sm-2 control-label" %>
+                            <div class="col-sm-6">
+                              <%= person.text_field :second_name, class: "form-control"%>
+                            </div>
+                          </div>
+
+                      <% end%>
+
+                      <%= f.fields_for @contribution.address do |address| %>
+
+                          <h3>Shipping address </h3>
+
+                          <div class="form-group">
+                            <%= address.label :street, class: "col-sm-2 control-label" %>
+                            <div class="col-sm-6">
+                              <%= address.text_field :street, class: "form-control"%>
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <%= address.label :phone_number, class: "col-sm-2 control-label" %>
+                            <div class="col-sm-6">
+                              <%= address.text_field :phone_number, class: "form-control"%>
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <%= address.label :zip_code, class: "col-sm-2 control-label" %>
+                            <div class="col-sm-6">
+                              <%= address.text_field :zip_code, class: "form-control"%>
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <%= address.label :city, class: "col-sm-2 control-label" %>
+                            <div class="col-sm-6">
+                              <%= address.text_field :city, class: "form-control"%>
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <%= address.label :state, class: "col-sm-2 control-label" %>
+                            <div class="col-sm-6">
+                              <%= address.text_field :state, class: "form-control"%>
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <%= address.label :country, class: "col-sm-2 control-label" %>
+                            <div class="col-sm-6">
+                              <%= address.text_field :country, class: "form-control"%>
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <div>
+                              <%= address.hidden_field :address_type , class: "form-control"  %>
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-2">
+                              <%= link_to 'Back',    project_select_reward_path(@project,@reward), :class => 'btn btn-primary'%>
+                              <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                          </div>
+
+                      <%end%>
+
+                    </div>
+                  </div>
+                </section>
+
+
+
+<% end %>

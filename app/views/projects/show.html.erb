@@ -1,0 +1,24 @@
+
+
+
+    <%= render 'layouts/navproject' %>
+    <%= render 'layouts/rewardsidebar' %>
+
+
+
+    <div class="col-md-7" id="content">
+      <div class="panel">
+        <div class="panel-heading" style="background-color:#111;color:#fff;">Top Stories</div>
+        <div class="panel-body">
+
+          <section id="project_content">
+            <%=  sanitize(@page.content) %>
+          </section>
+
+        </div>
+        <% if user_signed_in? && @project.user_id == current_user.id %>
+             <%= link_to 'Back to Projects', projects_path, :class => 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+

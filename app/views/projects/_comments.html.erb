@@ -1,0 +1,5 @@
+<%= form_for [@project, Comment.new] do |f| %>
+    <p><%= f.label :user %> <%= f.text_field :name %></p>
+    <p><%= f.text_area :content, :rows => 10 %></p>
+    <p><%= f.submit %></p>
+<% end %>

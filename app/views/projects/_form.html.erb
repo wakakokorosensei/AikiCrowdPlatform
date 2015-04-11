@@ -1,0 +1,84 @@
+
+        <%= form_for(@project) do |f| %>
+          <% if @project.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+              <ul>
+              <% @project.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+
+
+                <div class="form-group">
+                  <%= f.label :name%>
+                  <div>
+                    <%= f.text_field :name , class: 'form-control' %>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :description%>
+                  <div>
+                    <%= f.text_field :description, class: 'form-control', placeholder: 'Put description here'%>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :short_image%>
+                  <div>
+                    <%= f.text_field :short_image, class: 'form-control'%>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :image_url%>
+                  <div>
+                    <%= f.text_field :image_url, class: 'form-control'%>
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <%= f.label :video_url%>
+                  <div>
+                    <%= f.text_field :video_url, class: 'form-control'%>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :goal%>
+                  <div>
+                    <%= f.text_field :goal, class: 'form-control'%>
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <%= f.label :categories %><br>
+                  <%= f.fields_for :categories do |a| %>
+                    <%= a.select(:id, options_from_collection_for_select(Category.all, :id, :name), {:prompt => 'Please Choose'}, :class => "form-control") %>
+                  <% end %>
+                </div>
+
+
+                <div class="form-group">
+                  <%= f.label :project_types %><br>
+                  <%= f.fields_for :project_types do |a| %>
+                    <%= a.select(:id, options_from_collection_for_select(ProjectType.all, :id, :name), {:prompt => 'Please Choose'}, :class => "form-control") %>
+                  <% end %>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-sm-10 col-sm-offset-2">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </div>
+
+            <% end %>
+
+

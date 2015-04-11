@@ -1,0 +1,2 @@
+module ProjUpdatesHelper
+end

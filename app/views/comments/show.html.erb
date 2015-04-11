@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<% if @project.comments.size > 0 %>
+    <h2>Comments</h2>
+    <% for comment in @project.comments %>
+        <h3><%= comment.username %></h3>
+        <p><%= comment.content %></p>
+    <% end %>
+<% end %>
+
+<h2>New Comment</h2>
+
+<%= form_for [@project, Comment.new] do |f| %>
+
+    <p><%= f.text_area :content, :rows => 10 %></p>
+    <p><%= f.submit %></p>
+<% end %>
+
+
+<%= link_to 'Back', project_comments_path %>

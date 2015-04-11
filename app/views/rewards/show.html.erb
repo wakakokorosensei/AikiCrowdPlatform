@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+
+<h3>Name <span class="label label-default"><%= @reward.name %></span></h3>
+<h3>Price <span class="label label-default"><%= @reward.price %></span></h3>
+<h3>Maximun Backers <span class="label label-default"><%= @reward.maximum_backers %></span></h3>
+<h3>Description <span class="label label-default"><%= @reward.description %></span></h3>
+
+
+<%= link_to 'Edit', edit_project_reward_path(@project, @reward) %> |
+<%= link_to 'Back', project_rewards_path(@project, @rewards) %>

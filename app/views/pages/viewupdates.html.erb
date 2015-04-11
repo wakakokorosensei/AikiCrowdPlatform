@@ -1,0 +1,23 @@
+<%= render 'layouts/navproject' %>
+<%= render 'layouts/rewardsidebar' %>
+
+
+
+<div class="col-md-7" id="content">
+  <div class="panel">
+    <div class="panel-heading" style="background-color:#111;color:#fff;">Top Stories</div>
+    <div class="panel-body">
+
+
+      <% @project.pages.updatepage.each do |page| %>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <%=  sanitize(page.content) %>
+            </div>
+          </div>
+      <% end %>
+
+    </div><!--/panel-body-->
+  </div><!--/panel-->
+  <!--/end right column-->
+</div>
