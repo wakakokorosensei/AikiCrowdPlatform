@@ -99,9 +99,11 @@ test:
         # low amounts for fast failures.
         max_retries: 1
         retry_interval: 0
-production:
-  uri: mongodb://heroku:1C27UMt0dmkLT53RoR0uu-triJcmqQVVS32hAG-CDhWKd7_r5iPRSUWrsggDnFjMhu0DtzI8zqOCg-M0vqO6tg@candidate.43.mongolayer.com:10859,candidate.11.mongolayer.com:10784/app35832017 #<%= ENV['MONGOHQ_URL'] %>
 
-  max_retries_on_connection_failure: 20
-  persist_in_safe_mode: true
-  skip_version_check: true
+production:
+  sessions:
+    default:
+      uri: mongodb://heroku:1C27UMt0dmkLT53RoR0uu-triJcmqQVVS32hAG-CDhWKd7_r5iPRSUWrsggDnFjMhu0DtzI8zqOCg-M0vqO6tg@candidate.43.mongolayer.com:10859,candidate.11.mongolayer.com:10784/app35832017 #<%= ENV['MONGOHQ_URL'] %>
+      options:
+        skip_version_check: true
+        safe: true
