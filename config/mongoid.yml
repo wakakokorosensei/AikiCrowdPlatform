@@ -9,11 +9,11 @@ development:
       # Provides the hosts the default session can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
-        - 127.0.0.1:27017
+        #- 127.0.0.1:27017
+        mongodb://heroku:1C27UMt0dmkLT53RoR0uu-triJcmqQVVS32hAG-CDhWKd7_r5iPRSUWrsggDnFjMhu0DtzI8zqOCg-M0vqO6tg@candidate.43.mongolayer.com:10859,candidate.11.mongolayer.com:10784/app35832017
       options:
-        # Change the default write concern. (default = { w: 1 })
-        # write:
-        # w: 1
+        skip_version_check: true
+        safe: true
 
         # Change the default consistency model to primary, secondary.
         # 'secondary' will send reads to secondaries, 'primary' sends everything
@@ -99,3 +99,11 @@ test:
         # low amounts for fast failures.
         max_retries: 1
         retry_interval: 0
+
+production:
+  sessions:
+    default:
+      uri: mongodb://heroku:1C27UMt0dmkLT53RoR0uu-triJcmqQVVS32hAG-CDhWKd7_r5iPRSUWrsggDnFjMhu0DtzI8zqOCg-M0vqO6tg@candidate.43.mongolayer.com:10859,candidate.11.mongolayer.com:10784/app35832017 #<%= ENV['MONGOHQ_URL'] %>
+      options:
+        skip_version_check: true
+        safe: true
