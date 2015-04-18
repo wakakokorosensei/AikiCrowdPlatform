@@ -10,7 +10,18 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require plugins/jquery/jquery.min.js
+//= require plugins/jquery/jquery-migrate.min.js
+//= require plugins/bootstrap/js/bootstrap.min.js
+//= require plugins/back-to-top.js
+//= require plugins/smoothScroll.js
+//= require plugins/parallax-slider/js/modernizr.js
+//= require plugins/parallax-slider/js/jquery.cslider.js
+//= require plugins/owl-carousel/owl-carousel/owl.carousel.js
+//= require js/custom.js
+//= require js/app.js
+//= require js/plugins/owl-carousel.js
+//= require js/plugins/parallax-slider.js
 //= require jquery_ujs
 //= require ckeditor/init
 //= require turbolinks

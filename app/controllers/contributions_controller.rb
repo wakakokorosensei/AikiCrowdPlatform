@@ -14,6 +14,9 @@ class ContributionsController < ApplicationController
   end
 
   def new
+    if user_signed_in?
+
+    end
     @contribution = Contribution.new
     @contribution.build_address(address_type: 'shipping')
     @contribution.user = current_user.id

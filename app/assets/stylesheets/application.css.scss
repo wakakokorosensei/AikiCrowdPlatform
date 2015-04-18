@@ -10,6 +10,15 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require plugins/bootstrap/css/bootstrap.min.css
+ *= require css/style.css
+ *= require css/headers/header-default.css
+ *= require css/footers/footer-v1.css
+ *= require plugins/animate.css
+ *= require plugins/line-icons/line-icons.css
+ *= require plugins/font-awesome/css/font-awesome.min.css
+ *= require plugins/parallax-slider/css/parallax-slider.css
+ *= require plugins/owl-carousel/owl-carousel/owl.carousel.css
  *= require_tree .
  *= require_self
 

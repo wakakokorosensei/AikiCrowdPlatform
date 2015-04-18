@@ -1,12 +1,86 @@
-<h1>Crowdfunding Project Catalog</h1>
-
 <% @project.each do |project| %>
 
-    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-      <div class="thumbnail">
-        <img class="img-responsive" src="<%= image_url(project.short_image, class: 'list_image')%>"  alt="Imagen">
-        <h3><%= link_to project.name, project %></h3>
-        <%= sanitize(truncate(strip_tags(project.description), length: 20)) %>
+
+    <section id="news" class="news-section">
+      <div class="container content-lg">
+        <div class="title-v1">
+          <h2>Latest News</h2>
+          <p>We do <strong>things</strong> differently company providing key digital services. <br>
+            Focused on helping our clients to build a <strong>successful</strong> business on web and mobile.</p>
+        </div>
+
+        <!-- Profile Content -->
+        <div class="col-md-9">
+          <div class="profile-body">
+
+            <!--Projects-->
+            <div class="row">
+
+              <div class="col-sm-5">
+
+                <div class="easy-block-v1">
+                  <img class="img-responsive" src="<%= image_url(project.short_image, class: 'list_image')%>"  alt="Imagen">
+
+                  <div class="easy-block-v1-badge rgba-red">
+                    Technology
+                  </div>
+                </div>
+                <div class="projects" border="true">
+                  <h2><a class="color-dark" href="#">Rigging in Autodesk 3Ds Max</a></h2>
+                  <ul class="list-unstyled list-inline blog-info-v2">
+                    <li>By: <a class="color-green" href="#">Edward Rooster</a></li>
+                    <li><i class="fa fa-clock-o"></i> Jan 02, 2013</li>
+                  </ul>
+                  <p>
+                    <%= sanitize(truncate(strip_tags(project.description), length: 300)) %>
+                  </p>
+                  <br>
+                  <h3 class="heading-xs">Project Completeness <span class="pull-right">77%</span></h3>
+                  <div class="progress progress-u progress-xxs">
+                    <div class="progress-bar progress-bar-u" role="progressbar" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100" style="width: 77%">
+                    </div>
+                  </div>
+                  <ul class="list-inline blog-info-v2">
+                    <li>
+                      <strong>12%</strong>
+                      <span>Funded</span>
+                    </li>
+                    <li>
+                      <strong>17%</strong>
+                      <span>Pludged</span>
+                    </li>
+                    <li>
+                      <strong>25</strong>
+                      <span>days to go</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="project-share">
+                  <ul class="list-inline comment-list-v2 pull-left">
+                    <li><i class="fa fa-eye"></i> <a href="#">25</a></li>
+                    <li><i class="fa fa-comments"></i> <a href="#">32</a></li>
+                    <li><i class="fa fa-retweet"></i> <a href="#">77</a></li>
+                  </ul>
+                  <ul class="list-inline star-vote pull-right">
+                    <li><i class="color-green fa fa-star"></i></li>
+                    <li><i class="color-green fa fa-star"></i></li>
+                    <li><i class="color-green fa fa-star"></i></li>
+                    <li><i class="color-green fa fa-star-half-o"></i></li>
+                    <li><i class="color-green fa fa-star-o"></i></li>
+                  </ul>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+
       </div>
-    </div>
+    </section>
+
+
+
 <% end %>

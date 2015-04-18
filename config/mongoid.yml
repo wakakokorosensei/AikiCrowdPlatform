@@ -9,10 +9,10 @@ development:
       # Provides the hosts the default session can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
-         127.0.0.1:27017
+        - 127.0.0.1:27017
       options:
-        skip_version_check: true
-        safe: true
+       # skip_version_check: true
+       # safe: true
 
         # Change the default consistency model to primary, secondary.
         # 'secondary' will send reads to secondaries, 'primary' sends everything
