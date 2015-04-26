@@ -1,0 +1,48 @@
+<%= extends :application do %>
+    <%= area :sidebar do %>
+
+        <div class="container content profile">
+
+          <div class="row">
+            <div class="col-md-3 md-margin-bottom-40">
+              <img class="img-responsive profile-img margin-bottom-20" <%= image_tag('cara1.png', class: 'img-responsive') %>
+
+
+              <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
+                <li class="list-group-item ">
+                  <a href="page_profile.html"><i class="fa fa-bar-chart-o"></i> Overall</a>
+                </li>
+                <li class="list-group-item active">
+                  <%= link_to  dashboard_settings_path do %>
+                      <%= content_tag(:i, '', class: 'fa fa-cog') %>
+                      <%= content_tag(:t, ' Settings') %>
+                  <% end %>
+                </li>
+                <li class="list-group-item">
+                  <a href="page_profile_me.html"><i class="fa fa-user"></i> Profile</a>
+                </li>
+                <li class="list-group-item">
+                  <%= link_to  projects_path do %>
+                      <%= content_tag(:i, '', class: 'fa fa-cubes') %>
+                      <%= content_tag(:t, ' My projects') %>
+                  <% end %>
+                </li>
+                <li class="list-group-item">
+                  <a href="page_profile_comments.html"><i class="fa fa-comments"></i> Comments</a>
+                </li>
+                <li class="list-group-item">
+                  <a href="page_profile_users.html"><i class="fa fa-group"></i> Users</a>
+                </li>
+                <li class="list-group-item">
+                  <a href="page_profile_history.html"><i class="fa fa-history"></i> History</a>
+                </li>
+              </ul>
+
+            </div>
+
+            <%= area :settings %>
+
+          </div>
+        </div>
+    <% end %>
+<% end %>
