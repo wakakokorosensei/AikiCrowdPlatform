@@ -12,15 +12,22 @@
  *
  *= require plugins/bootstrap/css/bootstrap.min.css
  *= require css/style.css
+ *= require css/app
+ *= require css/blocks
+ *= require css/plugins
  *= require css/headers/header-default.css
  *= require css/footers/footer-v1.css
+ *= require css/pages/page_log_reg_v2.css
+ *= require css/pages/profile
  *= require plugins/animate.css
  *= require plugins/line-icons/line-icons.css
  *= require plugins/font-awesome/css/font-awesome.min.css
+ *= require plugins/sky-forms-pro/skyforms/css/sky-forms.css
+ *= require plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css
  *= require plugins/parallax-slider/css/parallax-slider.css
  *= require plugins/owl-carousel/owl-carousel/owl.carousel.css
- *= require_tree .
- *= require_self
 
+ *= require_self
+*= require normalize
  */
 

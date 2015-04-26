@@ -11,6 +11,7 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
+gem 'font-awesome-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
@@ -39,7 +40,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 gem 'ruby-debug-ide', branch: "no-compact-name"
-gem 'debase', '~> 0.1.2'
+gem 'debase', '~> 0.1.3'
 
 #MONGODB
 gem 'mongoid'
@@ -50,6 +51,9 @@ gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 #Nested Form
 gem 'cocoon'
 
+#nested layout
+gem 'nestive'
+
 #CKeditor
 gem 'ckeditor'
 
@@ -57,3 +61,9 @@ gem 'devise'
 
 #Payment
 gem 'mangopay'
+
+#web server application server
+gem 'passenger'
+
+#Command Pattern (publisher/subscribe)
+gem 'wisper'

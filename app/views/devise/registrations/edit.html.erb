@@ -1,155 +1,237 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<%= extends :sidebar do%>
+    <%= area :datauser do%>
+        <div class="col-md-9">
+          <div class="profile-body margin-bottom-20">
+            <div class="tab-v1">
+              <ul class="nav nav-justified nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#profile">Edit Profile</a></li>
+                <li><a data-toggle="tab" href="#socialTab">Social media</a></li>
+                <li><a data-toggle="tab" href="#payment">Payment Options</a></li>
+                <li><a data-toggle="tab" href="#settings">Notification Settings</a></li>
+                <li><a data-toggle="tab" href="#passwordTab">Change Password</a></li>
+              </ul>
+
+              <div class="tab-content">
+
+                <div id="profile" class="profile-edit tab-pane fade in active">
+                  <h2 class="heading-md">Manage your personal data.</h2>
+                  <p>Below are the name and email addresses on file for your account.</p>
+                  <br>
+                  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'sky-form', id:'sky-form4'  }) do |f| %>
+
+                      <dl class="dl-horizontal">
+                        <dt>First name</dt>
+                        <dd>
+                          <section>
+                            <label class="input">
+                              <i class="icon-append fa fa-user"></i>
+                              <%= f.text_field :first_name, class: "form-control",autofocus: true %>
+                            </label>
+                          </section>
+                        </dd>
+
+                        <dt>Second name</dt>
+                        <dd>
+                          <section>
+                            <label class="input">
+                              <i class="icon-append fa fa-user"></i>
+                              <%= f.text_field :second_name, class: "form-control",autofocus: true %>
+                            </label>
+                          </section>
+                        </dd>
+
+                        <dt>Email address</dt>
+                        <dd>
+                          <section>
+                            <label class="input">
+                              <i class="icon-append fa fa-envelope"></i>
+                              <%= f.email_field :email, class: "form-control", placeholder:'Email' %>
+                              <b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
+                            </label>
+                          </section>
+                        </dd>
+
+                        <dt>Phone number</dt>
+                        <dd>
+                          <section>
+                            <label class="input">
+                              <i class="icon-append fa fa-phone"></i>
+                              <%= f.text_field :phone_number, class: "form-control" %>
+                            </label>
+                          </section>
+                        </dd>
+
+                        <dt>Stree address</dt>
+                        <dd>
+                          <section>
+                            <label class="input">
+                              <i class="icon-append fa fa-automobile"></i>
+                              <%= f.text_field :street, class: "form-control" %>
+                            </label>
+                          </section>
+                        </dd>
+
+                        <dt>City</dt>
+                        <dd>
+                          <section>
+                            <label class="input">
+                              <i class="icon-append fa fa-building"></i>
+                              <%= f.text_field :city, class: "form-control" %>
+                            </label>
+                          </section>
+                        </dd>
+
+                        <dt>Zip code</dt>
+                        <dd>
+                          <section>
+                            <label class="input">
+                              <i class="icon-append fa fa-plane"></i>
+                              <%= f.text_field :zip_code, class: "form-control" %>
+                            </label>
+                          </section>
+                        </dd>
+
+                        <dt>State</dt>
+                        <dd>
+                          <section>
+                            <label class="input">
+                              <i class="icon-append fa fa-street-view"></i>
+                              <%= f.text_field :state, class: "form-control" %>
+                            </label>
+                          </section>
+                        </dd>
+
+                        <dt>Country</dt>
+                        <dd>
+                          <section>
+                            <label class="input">
+                              <i class="icon-append fa fa-street-view"></i>
+                              <%= f.text_field :country, class: "form-control" %>
+                            </label>
+                          </section>
+                        </dd>
+                      </dl>
+
+                      <br>
+
+                      <button type="button" class="btn-u btn-u-default">Cancel</button>
+                      <button class="btn-u" type="submit">Save Changes</button>
+                  <% end %>
+                </div>
+
+                <div id="socialTab" class="profile-edit tab-pane fade">
+                  <h2 class="heading-md">Manage your Social links</h2>
+                  <br>
+                  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'sky-form', id:'sky-form4'  }) do |f| %>
+
+                      <dl class="dl-horizontal">
+                      <dt>Facebook link</dt>
+                      <dd>
+                        <section>
+                          <label class="input">
+                            <i class="icon-append fa fa-facebook"></i>
+                            <%= f.text_field :facebook_link , class: "form-control" %>
+                          </label>
+                        </section>
+                      </dd>
 
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f| %>
-    <%= devise_error_messages! %>
+                      <dt>Twitter link</dt>
+                      <dd>
+                        <section>
+                          <label class="input">
+                            <i class="icon-append fa fa-twitter"></i>
+                            <%= f.text_field :twitter , class: "form-control" %>
+                          </label>
+                        </section>
+                      </dd>
 
 
 
-            <div>
-              <h3><span class="label label-info">Personal data</span></h3>
-            </div>
+                      <dt>Other link</dt>
+                      <dd>
+                        <section>
+                          <label class="input">
+                            <i class="icon-append fa fa-link"></i>
+                            <%= f.text_field :other_link , class: "form-control" %>
+                          </label>
+                        </section>
+                      </dd>
+                      </dl>
 
-            <div class="form-group">
-              <%= f.label :first_name, class: "col-sm-2 control-label" %>
-              <div class="col-sm-6">
-                <%= f.text_field :first_name, class: "form-control",autofocus: true %>
+
+                      <br>
+
+                      <button type="button" class="btn-u btn-u-default">Cancel</button>
+                      <button class="btn-u" type="submit">Save Changes</button>
+                  <% end %>
+                </div>
+
+
+
+                <div id="passwordTab" class="profile-edit tab-pane fade">
+                  <h2 class="heading-md">Manage your Security Settings</h2>
+                  <p>Change your password.</p>
+                  <br>
+                  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'sky-form', id:'sky-form4'  }) do |f| %>
+
+                      <dl class="dl-horizontal">
+                      <dt>Username</dt>
+                      <dd>
+                        <section>
+                          <label class="input">
+                            <i class="icon-append fa fa-user"></i>
+                            <%= f.text_field :username, class: "form-control",placeholder: 'Username' %>
+                            <b class="tooltip tooltip-bottom-right">Needed to enter the website</b>
+                          </label>
+                        </section>
+                      </dd>
+
+                      <dt>Email address</dt>
+                      <dd>
+                        <section>
+                          <label class="input">
+                            <i class="icon-append fa fa-envelope"></i>
+                            <%= f.email_field :email, class: "form-control", placeholder:'Email' %>
+                            <b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
+                          </label>
+                        </section>
+                      </dd>
+                      <dt>Enter your password</dt>
+                      <dd>
+                        <section>
+                          <label class="input">
+                            <i class="icon-append fa fa-lock"></i>
+                            <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: 'Password' %>
+                            <b class="tooltip tooltip-bottom-right">Don't forget your password</b>
+                          </label>
+                        </section>
+                      </dd>
+                      <dt>Confirm Password</dt>
+                      <dd>
+                        <section>
+                          <label class="input">
+                            <i class="icon-append fa fa-lock"></i>
+                            <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder:'Confirm Password' %>
+                            <b class="tooltip tooltip-bottom-right">Don't forget your password</b>
+                          </label>
+                        </section>
+                      </dd>
+                    </dl>
+
+                    <br>
+
+                    <button type="button" class="btn-u btn-u-default">Cancel</button>
+                    <button class="btn-u" type="submit">Save Changes</button>
+                  <% end %>
+                </div>
               </div>
+
             </div>
+          </div>
+        </div>
 
-            <div class="form-group">
-              <%= f.label :second_name, class: "col-sm-2 control-label" %>
-              <div class="col-sm-6">
-                <%= f.text_field :second_name, class: "form-control",autofocus: true %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :email, class: "col-sm-2 control-label" %>
-              <div class="col-sm-6">
-                <%= f.email_field :email, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :username, class: "col-sm-2 control-label" %>
-              <div class="col-sm-6">
-                <%= f.text_field :username, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :password, class: "col-sm-2 control-label" %> <i>(leave blank if you don't want to change it)</i>
-              <div class="col-sm-6">
-                <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :password_confirmation, class: "col-sm-2 control-label" %>
-              <div class="col-sm-6">
-                <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :current_password, class: "col-sm-2 control-label" %> <i>(we need your current password to confirm your changes)</i>
-              <div class="col-sm-6">
-                <%= f.password_field :current_password, autocomplete: "off", class: "form-control"  %>
-              </div>
-            </div>
-
-            <div>
-              <h3><span class="label label-info">Contact Info</span></h3>
-            </div>
-
-            <div class="form-group">
-              <%= f.label 'Street', class: "col-sm-2 control-label" %>
-              <div class="col-sm-6">
-                <%= f.text_field :street, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%= f.label 'Phone number', class: "col-sm-2 control-label"  %>
-              <div class="col-sm-6">
-                <%= f.text_field :phone_number, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%= f.label 'City', class: "col-sm-2 control-label" %>
-              <div class="col-sm-6">
-                <%= f.text_field :city, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%= f.label 'Zip code', class: "col-sm-2 control-label"  %>
-              <div class="col-sm-6">
-                <%= f.text_field :zip_code, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%= f.label 'State', class: "col-sm-2 control-label"  %>
-              <div class="col-sm-6">
-                <%= f.text_field :state, class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%= f.label 'Country', class: "col-sm-2 control-label"  %>
-              <div class="col-sm-6">
-                <%= f.text_field :country, class: "form-control" %>
-              </div>
-            </div>
-
-
-            <div>
-              <h3><span class="label label-info">Social media</span></h3>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :twitter, class: "col-sm-2 control-label" %>
-              <div class="col-sm-6">
-                <%= f.text_field :twitter , class: "form-control" %>
-              </div>
-            </div>
-
-
-            <div class="form-group">
-              <%= f.label :facebook_link, class: "col-sm-2 control-label" %>
-              <div class="col-sm-6">
-                <%= f.text_field :facebook_link , class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :other_link, class: "col-sm-2 control-label" %>
-              <div class="col-sm-6">
-                <%= f.text_field :other_link , class: "form-control" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :uploaded_image, class: "col-sm-2 control-label" %>
-              <div class="col-sm-6">
-                <%= f.text_field :uploaded_image , class: "form-control" %>
-              </div>
-            </div>
-
-
-
-
-
-
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-6">
-        <%= f.submit "Update", class: "btn btn-primary" %>
       </div>
     </div>
-
-
+    <% end %>
 <% end %>
-

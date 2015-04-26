@@ -6,6 +6,7 @@ class Project
   field :description, type: String
   field :short_image, type: String
   field :goal, type: BigDecimal
+  field :start_at, type: Date
   field :expires_at, type: Date
   field :image_url, type: String
   field :video_url, type: String

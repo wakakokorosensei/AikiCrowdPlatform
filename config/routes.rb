@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   get '/project/:project_id/reward/:id', to: 'rewards#reward_selected', as: 'project_select_reward'
   post '/project/:project_id/reward/:reward_id/contributions/', to: 'contributions#continue_payment', as: 'continue_payment'
   get '/project/:project_id/reward/:reward_id/addresses', to: 'addresses#shipping_address', as: 'shipping_address'
+  get '/dashboard', to: 'dashboard#dashboard_page'
+  get '/dashboard/settings', to: 'dashboard#settings'
+  get '/dashboard/profile', to: 'dashboard#profile'
 
 
 

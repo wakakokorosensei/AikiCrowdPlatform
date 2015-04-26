@@ -1,10 +1,126 @@
-<h1>Editing project</h1>
+<%= extends :sidebar do%>
+    <%= area :project_setup do%>
+        <div class="col-md-9">
+          <div class="profile-body margin-bottom-20">
+            <div class="tab-v1">
+              <ul class="nav nav-justified nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#profile">Profile</a></li>
+                <li><a data-toggle="tab" href="#socialTab">Story</a></li>
+                <li><a data-toggle="tab" href="#socialTab">Updates</a></li>
+                <li><a data-toggle="tab" href="#payment"></a>Comments</li>
+                <li><a data-toggle="tab" href="#settings">Reward settings</a></li>
+                <li><a data-toggle="tab" href="#passwordTab">Show project</a></li>
+              </ul>
 
-<% if user_signed_in? && @project.user_id == current_user.id %>
+              <div class="tab-content">
 
-    <%= render 'form' %>
+                <div id="profile" class="profile-edit tab-pane fade in active">
+                  <h2 class="heading-md">Manage your project profile.</h2>
+                  <p> AQUI NO SE QUE PONER.</p>
+                  <br>
+                  <%= form_for(@project, html: { method: :put, class: 'sky-form', id:'sky-form4'  }) do |f|  %>
 
-    <%= link_to 'Back', projects_path %>
+                  <dl class="dl-horizontal">
+                    <dt>Project name</dt>
+                    <dd>
+                      <section>
+                        <label class="input">
+                          <i class="icon-append fa fa-user"></i>
+                          <%= f.text_field :name, class: "form-control",autofocus: true %>
+                        </label>
+                      </section>
+                    </dd>
 
+                    <dt>Project description</dt>
+                    <dd>
+                      <section>
+                        <label class="input">
+                          <i class="icon-append fa fa-user"></i>
+                          <%= f.text_field :description, class: 'form-control', placeholder: 'Put description here'%>
+                        </label>
+                      </section>
+                    </dd>
+
+
+                    <dt>Short image</dt>
+                    <dd>
+                      <section>
+                        <label class="input">
+                          <i class="icon-append fa fa-phone"></i>
+                          <%= f.text_field :short_image, class: 'form-control'%>
+                        </label>
+                      </section>
+                    </dd>
+
+                    <dt>Image url</dt>
+                    <dd>
+                      <section>
+                        <label class="input">
+                          <i class="icon-append fa fa-automobile"></i>
+                          <%= f.text_field :image_url, class: 'form-control'%>
+                        </label>
+                      </section>
+                    </dd>
+
+                    <dt>Video url</dt>
+                    <dd>
+                      <section>
+                        <label class="input">
+                          <i class="icon-append fa fa-building"></i>
+                          <%= f.text_field :video_url, class: 'form-control'%>
+                        </label>
+                      </section>
+                    </dd>
+
+                    <dt>Goal</dt>
+                    <dd>
+                      <section>
+                        <label class="input">
+                          <i class="icon-append fa fa-plane"></i>
+                          <%= f.text_field :goal, class: 'form-control'%>
+                        </label>
+                      </section>
+                    </dd>
+
+                    <dt>Category</dt>
+                    <dd>
+                      <section>
+                        <label class="label">Input with autocomlete</label>
+                        <label class="input">
+                          <input type="text" list="list">
+                          <datalist id="list">
+                            <option value="Yasmin"></option>
+                            <option value="Zelma"></option>
+                          </datalist>
+                        </label>
+                      </section>
+                    </dd>
+
+                    <dt>Project type</dt>
+                    <dd>
+                      <section>
+                        <label class="label">Inline radios</label>
+                        <div class="inline-group">
+                          <label class="radio"><input type="radio" name="radio-inline" checked><i class="rounded-x"></i>All-or-Nathing (AON)</label>
+                          <label class="radio"><input type="radio" name="radio-inline"><i class="rounded-x"></i>Keep-it-All (KIA)</label>
+                        </div>
+                      </section>
+                    </dd>
+                  </dl>
+
+                  <br>
+
+                  <button type="button" class="btn-u btn-u-default">Cancel</button>
+                  <button class="btn-u" type="submit">Save Changes</button>
+    <% end %>
+    </div>
+
+    </div>
+    </div>
+    </div>
+
+    </div>
+    </div>
+<% end %>
 <% end %>
 
