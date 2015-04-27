@@ -1,35 +1,21 @@
-<h1>Listing comments</h1>
-
-<table class="table table-hover">
-
-  <thead>
-  <tr>
-    <th>User</th>
-    <th>Comment</th>
-    <th>Actions</th>
-  </tr>
-
-
-
-  </thead>
-
-  <tbody>
-    <% @project.comments.each do |comment| %>
-    <tr>
-      <td><%= comment.username %></td>
-
-      <td><%= comment.content %></td>
-
-      <td class="list_actions">
-        <td><%= link_to 'Show', project_comment_path(@project, comment) %></td>
-        <td><%= link_to 'Destroy', project_comment_path(@project, comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
+<%= extends :project_setup_sidebar do%>
+    <%= area :project_comments_index do%>
+        <% @project.comments.each do |comment| %>
+            <div class="col-md-9">
+                <dl class="dl-horizontal">
+                  <dt><strong><%= comment.username %></strong></dt>
+                  <dd>
+                    <%= comment.content %>
+                    <span>
+                  <%= link_to project_comment_path(@project, comment) do %>
+                              <%= content_tag(:i, '', class: 'fa fa-pencil') %>
+                  <% end%>
+                </span>
+                  </dd>
+                  <hr>
+                </dl>
+            </div>
+        <% end %>
 
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Comment', new_project_comment_path %> |
-<%= link_to 'Back', projects_path %>
+<% end %>
