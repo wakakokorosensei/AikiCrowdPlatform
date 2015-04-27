@@ -1,0 +1,71 @@
+<%= area :project_setup_sidebar do %>
+    <!--=== Conteiner ===-->
+    <div class="container content">
+
+      <!--=== Row ===-->
+      <div class="row">
+        <!-- Begin Sidebar Menu -->
+        <div class="col-md-3">
+          <img class="img-responsive profile-img margin-bottom-20"  src="<%= image_url(@project.short_image, class: 'list_image')%>">
+
+          <!-- Begin List group -->
+          <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
+            <li class="list-group-item">
+              <%= link_to  projects_path do %>
+                  <%= content_tag(:i, '', class: 'fa fa-arrow-circle-left') %>
+                  <%= content_tag(:t, ' Back to projects') %>
+              <% end %>
+            </li>
+          </ul>
+          <!-- End List group -->
+
+          <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
+
+            <li class="list-group-item">
+              <%= link_to edit_project_path(@project) do %>
+                  <%= content_tag(:i, '', class: 'fa fa-cubes') %>
+                  <%= content_tag(:t, ' Project Profile') %>
+              <% end %>
+
+            </li>
+
+            <li class="list-group-item">
+                <%= link_to  edit_project_page_path(@project, 'home') do %>
+                    <%= content_tag(:i, '', class: 'fa fa-history') %>
+                    <%= content_tag(:t, ' Home page') %>
+                <% end %>
+            </li>
+
+            <li class="list-group-item">
+              <%= link_to  project_pages_path(@project) do %>
+                  <%= content_tag(:i, '', class: 'fa fa-folder-open') %>
+                  <%= content_tag(:t, ' Project Updates') %>
+              <% end %>
+            </li>
+
+            <li class="list-group-item">
+              <%= link_to  project_comments_path(@project) do %>
+                  <%= content_tag(:i, '', class: 'fa fa-comments') %>
+                  <%= content_tag(:t, ' Project Comments') %>
+              <% end %>
+            </li>
+
+            <li class="list-group-item">
+              <a href="page_profile_users.html"><i class="fa fa-group"></i> Users</a>
+            </li>
+            <li class="list-group-item">
+              <a href="page_profile_history.html"><i class="fa fa-history"></i> History</a>
+            </li>
+          </ul>
+
+
+        </div>
+        <!-- End Sidebar Menu -->
+        <%= area :project_profile%>
+        <%= area :project_page_home %>
+        <%= area :project_comments_index %>
+      </div>
+      <!--=== end Row ===-->
+    </div>
+    <!--=== End Conteiner ===-->
+<% end %>
