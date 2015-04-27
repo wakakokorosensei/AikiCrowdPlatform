@@ -1,8 +1,9 @@
-<h1>Editing page</h1>
+<%= extends :project_setup_sidebar do%>
+    <%= area :project_page_home do%>
 
-<%= render 'form' %>
+        <div class="col-md-9">
+        <%= render 'form' %>
+        </div>
 
-
-<%= link_to 'Back', projects_path%> |
-<%= link_to 'Show', project_page_path(@project, @page) , :class => 'btn btn-mini' %>
-
+    <% end %>
+<% end %>
