@@ -28,7 +28,7 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.new(project_params)
     set_category
-    set_project_type
+   # set_project_type
     respond_to do |format|
       if @project.save
         @project.pages.create(pagetype: 'home', content: 'Put your content here')
@@ -45,7 +45,7 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1.json
   def update
     set_category
-    set_project_type
+   # set_project_type
     @project.update(project_params)
     respond_to do |format|
       if @project.update(project_params)
@@ -82,8 +82,8 @@ class ProjectsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def project_params
-    params.require(:project).permit(:id, :name, :description, :short_image, :image_url, :story, :goal,
-                                    :category, categories_attributes: [:id, :name],
+    params.require(:project).permit(:id, :name, :description, :short_image, :image_url, :story, :goal, :kia, :aol,
+                                    :category, categories_attributes: [:id, :name], pages_attributes: [:id, :pagetype, :content],
                                     rewards_attributes: [:name, :price, :maximum_backers, :description])
   end
 
@@ -93,10 +93,10 @@ class ProjectsController < ApplicationController
     category.projects << @project
   end
 
-  def set_project_type
-    prjType = ProjectType.find(params[:project][:project_types][:id])
-    prjType.projects << @project
-  end
+  # def set_project_type
+  #   prjType = ProjectType.find(params[:project][:project_types][:id])
+  #   prjType.projects << @project
+  # end
 
 
 end
