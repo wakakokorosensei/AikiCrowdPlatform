@@ -1,21 +1,34 @@
 <%= extends :project_setup_sidebar do%>
     <%= area :project_comments_index do%>
-        <% @project.comments.each do |comment| %>
-            <div class="col-md-9">
-                <dl class="dl-horizontal">
-                  <dt><strong><%= comment.username %></strong></dt>
-                  <dd>
-                    <%= comment.content %>
-                    <span>
-                  <%= link_to project_comment_path(@project, comment) do %>
-                              <%= content_tag(:i, '', class: 'fa fa-pencil') %>
-                  <% end%>
-                </span>
-                  </dd>
-                  <hr>
-                </dl>
-            </div>
-        <% end %>
+        <div class="col-md-9">
 
+            <div class="panel panel-sea margin-bottom-40">
+              <div class="panel-heading">
+                <h3 class="panel-title"><i class="fa fa-edit"></i> Comments list</h3>
+              </div>
+              <div class="panel-body">
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th>Username</th>
+                    <th>Content</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <% @project.comments.each do |comment| %>
+                  <tr>
+                    <td><%= comment.username %></td>
+                    <td><%= comment.content %></td>
+                    <td>@mdo</td>
+                    <td><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</button></td>
+                  </tr>
+                  <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+        </div>    <!--End Basic Table-->
     <% end %>
 <% end %>

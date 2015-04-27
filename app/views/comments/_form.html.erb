@@ -1,41 +1,47 @@
+<%= extends :project_setup_sidebar do%>
+    <%= area :project_setup_comments do%>
+        <div class="col-md-9">
+             <%= form_for([@project, @comment], html: { method: :put, class: 'sky-form'  }) do |f|  %>
+                  <header>Project comments</header>
+                  <fieldset>
+                    <dl class="dl-horizontal">
+                      <% if @comment.errors.any? %>
+                          <div id="error_explanation">
+                            <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
 
-      <%= form_for([@project, @comment]) do |f| %>
-          <% if @comment.errors.any? %>
-              <div id="error_explanation">
-                <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-
-                <ul>
-                  <% @comment.errors.full_messages.each do |message| %>
-                      <li><%= message %></li>
-                  <% end %>
-                </ul>
-              </div>
-          <% end %>
-
-          <div class="form-group">
-            <%= f.label :content%>
-            <div>
-              <%= f.text_area :content, :rows => 10, class: 'form-control'%>
-            </div>
-          </div>
+                            <ul>
+                              <% @comment.errors.full_messages.each do |message| %>
+                                  <li><%= message %></li>
+                              <% end %>
+                            </ul>
+                          </div>
+                      <% end %>
 
 
-          <div class="actions">
-            <%= f.submit %>
-          </div>
-      <% end %>
+                      <dt>Project description</dt>
+                      <dd>
+                        <section>
+                          <label class="textarea">
+                            <i class="icon-prepend fa fa-comment"></i>
+                            <%= f.text_area :content, class: 'form-control', placeholder: 'Put your comment here'%>
+                          </label>
+                        </section>
+                      </dd>
 
-      <% if @project.comments.size > 0 %>
-          <h2>Comments</h2>
-          <ul class="list-group">
-            <% for comment in @project.comments %>
-                <li class="list-group-item">
-                  <h3><%= comment.username%></h3>
-                  <p><%= comment.content %></p>
-                </li>
+
+                      <br>
+
+                      <button class="btn-u" type="submit">Save Changes</button>
+
+                    </dl>
+                  </fieldset>
             <% end %>
-          </ul>
-      <% end %>
+          <%= render 'comments/project_comments_list' %>
+        </div>
 
 
 
+
+
+    <% end %>
+<% end %>
