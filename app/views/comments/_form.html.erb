@@ -1,47 +1,78 @@
 <%= extends :project_setup_sidebar do%>
     <%= area :project_setup_comments do%>
         <div class="col-md-9">
-             <%= form_for([@project, @comment], html: { method: :put, class: 'sky-form'  }) do |f|  %>
-                  <header>Project comments</header>
-                  <fieldset>
-                    <dl class="dl-horizontal">
-                      <% if @comment.errors.any? %>
-                          <div id="error_explanation">
-                            <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+          <%= form_for([@project, @comment], html: { method: :post, class: 'sky-form'  }) do |f|  %>
+              <header>Project comments</header>
+              <fieldset>
+                <dl class="dl-horizontal">
+                  <% if @comment.errors.any? %>
+                      <div id="error_explanation">
+                        <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
 
-                            <ul>
-                              <% @comment.errors.full_messages.each do |message| %>
-                                  <li><%= message %></li>
-                              <% end %>
-                            </ul>
-                          </div>
-                      <% end %>
-
-
-                      <dt>Project description</dt>
-                      <dd>
-                        <section>
-                          <label class="textarea">
-                            <i class="icon-prepend fa fa-comment"></i>
-                            <%= f.text_area :content, class: 'form-control', placeholder: 'Put your comment here'%>
-                          </label>
-                        </section>
-                      </dd>
+                        <ul>
+                          <% @comment.errors.full_messages.each do |message| %>
+                              <li><%= message %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                  <% end %>
 
 
-                      <br>
+                  <dt>Comment</dt>
+                  <dd>
+                    <section>
+                      <label class="textarea textarea-resizable">
+                        <%= f.text_area :content, class: 'form-control', placeholder: 'Put your comment here'%>
+                      </label>
+                    </section>
+                  </dd>
 
-                      <button class="btn-u" type="submit">Save Changes</button>
 
-                    </dl>
-                  </fieldset>
-            <% end %>
-          <%= render 'comments/project_comments_list' %>
+                  <br>
+
+                  <button class="btn-u" type="submit">Save comment</button>
+
+                </dl>
+              </fieldset>
+          <% end %>
+
+          <% if @project.comments.size > 0 %>
+              <div class="panel panel-profile">
+                <div class="panel-heading overflow-h">
+                  <a href="#"><i class="fa fa-cog pull-right"></i></a>
+                </div>
+                <div class="panel-body">
+                  <% for comment in @project.comments %>
+                      <div class="media media-v2">
+                        <a class="pull-left" href="#">
+                          <img class="media-object rounded-x" src="assets/img/testimonials/img2.jpg" alt="">
+                        </a>
+                        <div class="media-body">
+                          <h4 class="media-heading">
+                            <strong><a> <%= comment.username %></a></strong>
+
+                            <small class="pull-right">About an hour ago</small>
+
+                          </h4>
+                          <p>
+                            <%= comment.content %>
+                          </p>
+                          <ul class="list-inline results-list pull-left">
+                            <li><a href="#">100 Likes</a></li>
+                            <li><a href="#">10 Share</a></li>
+                          </ul>
+                          <ul class="list-inline pull-right">
+                            <li><a href="#"><i class="expand-list rounded-x fa fa-reply"></i></a></li>
+                            <li><a href="#"><i class="expand-list rounded-x fa fa-heart"></i></a></li>
+                            <li><a href="#"><i class="expand-list rounded-x fa fa-retweet"></i></a></li>
+                          </ul>
+                        </div>
+                      </div><!--/end media media v2-->
+                  <% end %>
+                  <button type="button" class="btn-u btn-u-default btn-block">Load More</button>
+                </div>
+              </div>
+          <% end %>
         </div>
-
-
-
-
-
     <% end %>
 <% end %>

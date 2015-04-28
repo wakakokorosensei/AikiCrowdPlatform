@@ -17,6 +17,8 @@ class Project
   field :recommended, type: Boolean, default: false
   field :successful, type: Boolean, default: false
   field :reached, type: BigDecimal, default: 0
+  field :aol, type: Boolean, default: false
+  field :kia, type: Boolean, default: false
 
 
   validates :short_image, allow_blank: true, format: {with:%r{\.(gif|jpg|png)\Z}i, message: 'must be a URL for GIF, JPG or PNG image.'}

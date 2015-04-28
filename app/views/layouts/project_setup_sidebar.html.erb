@@ -44,9 +44,16 @@
             </li>
 
             <li class="list-group-item">
-              <%= link_to  project_comments_path(@project) do %>
+              <%= link_to  new_project_comment_path(@project) do %>
                   <%= content_tag(:i, '', class: 'fa fa-comments') %>
                   <%= content_tag(:t, ' Project Comments') %>
+              <% end %>
+            </li>
+
+            <li class="list-group-item">
+              <%= link_to  project_rewards_path(@project) do %>
+                  <%= content_tag(:i, '', class: 'fa fa-comments') %>
+                  <%= content_tag(:t, ' Project Rewards') %>
               <% end %>
             </li>
 
@@ -63,7 +70,11 @@
         <!-- End Sidebar Menu -->
         <%= area :project_profile%>
         <%= area :project_page_home %>
+        <%= area :project_setup_comments %> <!-- Este caso sirve si permito que el user pueda editar los comentariaos  -->
         <%= area :project_comments_index %>
+        <%= area :project_rewards_index %>
+        <%= area :project_reward %>
+        <%= area :project_edit_reward %>
       </div>
       <!--=== end Row ===-->
     </div>

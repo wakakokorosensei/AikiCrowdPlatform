@@ -1,5 +1,60 @@
-<h1>Editing reward</h1>
+<%= extends :project_setup_sidebar do%>
+    <%= area :project_edit_reward do%>
+        <div class="col-md-9">
 
-<%= render 'form' %>
+          <%= form_for([@project, @reward], html: { method: :put, class: 'sky-form'  }) do |f|  %>
+              <header>Reward</header>
+              <fieldset>
+                <dl class="dl-horizontal">
+                  <dt>Name</dt>
+                  <dd>
+                    <section>
+                      <label class="input">
+                        <i class="icon-append fa fa-user"></i>
+                        <%= f.text_field :name, class: "form-control",autofocus: true %>
+                      </label>
+                    </section>
+                  </dd>
 
-<%= link_to 'Back', project_rewards_path(@project, @reward) %>
+                  <dt>Price</dt>
+                  <dd>
+                    <section>
+                      <label class="input">
+                        <i class="icon-append fa fa-user"></i>
+                        <%= f.text_field :price, class: "form-control",autofocus: true %>
+                      </label>
+                    </section>
+                  </dd>
+
+                  <dt>Maximun backers</dt>
+                  <dd>
+                    <section>
+                      <label class="input">
+                        <i class="icon-append fa fa-user"></i>
+                        <%= f.text_field :maximum_backers , class: "form-control",autofocus: true %>
+                      </label>
+                    </section>
+                  </dd>
+
+                  <dt>Description</dt>
+                  <dd>
+                    <section>
+                      <label class="input">
+                        <i class="icon-append fa fa-user"></i>
+                        <%= f.text_field :description , class: "form-control",autofocus: true %>
+                      </label>
+                    </section>
+                  </dd>
+                </dl>
+
+                <br>
+
+                <button class="btn-u" type="submit">Save</button>
+
+              </fieldset>
+          <% end %>
+        </div>
+
+    <% end %>
+<% end %>
+

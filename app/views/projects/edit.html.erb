@@ -68,7 +68,6 @@
                     <dt>Category</dt>
                     <dd>
                       <section>
-                        <label class="label">Select</label>
                         <label class="select">
                           <%= f.fields_for :categories do |a| %>
                               <%= a.collection_select(:id, Category.all, :id, :name) %>
@@ -81,7 +80,6 @@
                     <dt>Project type</dt>
                     <dd>
                       <section>
-                        <label class="label">Inline radios</label>
                         <div class="inline-group">
                           <label class="radio"><%= f.check_box :aol, class: 'rounded-x'%><i class="rounded-x"></i>All-or-Nathing (AON)</label>
                           <label class="radio"><%= f.check_box :kia, class: 'rounded-x'%><i class="rounded-x"></i>Keep-it-All (KIA)</label>

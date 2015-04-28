@@ -2,10 +2,12 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy, :new, :create, :index]
   before_filter :authenticate_user!
 
+
   # GET /comments
   # GET /comments.json
   def index
-    @project.comments
+    @project.comments.order_by(:created_at => 'desc')
+
   end
 
   # GET /comments/1
@@ -26,12 +28,12 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
- #   if user_signed_in?
       @comment = current_user.comments.new(comment_params)
       firstname = current_user.first_name
       secondname = current_user.second_name
       @comment.username = firstname + ' ' + secondname
       @project.comments << @comment
+      @project.comments.order_by(created_at: 'asc')
       respond_to do |format|
         if @project.save
           format.html { redirect_to new_project_comment_path(@project), notice: 'Comment was successfully created.' } # [@project, @comment]
@@ -41,9 +43,6 @@ class CommentsController < ApplicationController
           format.json { render json: @comment.errors, status: :unprocessable_entity }
         end
       end
-    # else
-    #   redirect_to new_user_session_path
-    # end
   end
 
   # PATCH/PUT /comments/1

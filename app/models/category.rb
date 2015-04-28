@@ -6,3 +6,4 @@ class Category
   has_many :projects
 
 end
+
