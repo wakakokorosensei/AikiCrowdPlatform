@@ -1,8 +1,33 @@
-<h1>New update</h1>
+<%= extends :project_setup_sidebar do%>
+    <%= area :project_page_home do%>
+        <div class="col-md-9">
 
-<div>
-  <%= render 'form' %>
-</div>
+        <%= form_for([@project, @page], html: { method: :post, class: 'sky-form'  }) do |f|  %>
+            <header>Edit home page project</header>
+            <% if @page.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
 
+                  <ul>
+                    <% @page.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+            <% end %>
 
-<%= link_to 'Back', project_pages_path %>
+            <fieldset>
+              <dd>
+                <section>
+                  <%= f.cktext_area :content, :rows => 20, :ckeditor => {:toolbar => "mini", filebrowserImageBrowseUrl: '/ckeditor/pictures', filebrowserImageUploadUrl: '/ckeditor/pictures'} %>
+                </section>
+              </dd>
+
+              <button class="btn-u" type="submit">Save Upadate</button>
+
+            </fieldset>
+
+        <% end %>
+      </div>
+    <% end %>
+<% end %>

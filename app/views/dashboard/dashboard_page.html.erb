@@ -8,17 +8,15 @@
 
       <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
         <li class="list-group-item ">
-          <a href="page_profile.html"><i class="fa fa-bar-chart-o"></i> Overall view</a>
+          <a href="page_profile.html"><i class="fa fa-bar-chart-o"></i> Overall layout</a>
         </li>
         <li class="list-group-item active">
           <%= link_to  edit_user_registration_path do %>
-              <%= content_tag(:i, '', class: 'fa fa-cog') %>
-              <%= content_tag(:t, ' Settings') %>
+              <%= content_tag(:i, '', class: 'fa fa-user') %>
+              <%= content_tag(:t, ' Profile') %>
           <% end %>
         </li>
-        <li class="list-group-item">
-          <a href="page_profile_me.html"><i class="fa fa-user"></i> Profile</a>
-        </li>
+
         <li class="list-group-item">
           <%= link_to  projects_path do %>
               <%= content_tag(:i, '', class: 'fa fa-cubes') %>
@@ -28,13 +26,12 @@
         <li class="list-group-item">
           <a href="page_profile_comments.html"><i class="fa fa-comments"></i> Comments</a>
         </li>
-        <li class="list-group-item">
-          <a href="page_profile_users.html"><i class="fa fa-group"></i> Users</a>
-        </li>
+
         <li class="list-group-item">
           <a href="page_profile_history.html"><i class="fa fa-history"></i> History</a>
         </li>
       </ul>
+
 
     </div>
 

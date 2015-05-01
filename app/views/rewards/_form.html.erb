@@ -1,6 +1,6 @@
 <%= extends :project_setup_sidebar do%>
     <%= area :project_reward do%>
-        <div class="col-md-9">
+        <div class="col-md-9" xmlns="http://www.w3.org/1999/html">
 
           <%= form_for([@project, @reward], html: { method: :post, class: 'sky-form'  }) do |f|  %>
               <header>Reward</header>
@@ -21,7 +21,7 @@
                       <section>
                         <label class="input">
                           <i class="icon-append fa fa-user"></i>
-                          <%= f.text_field :price, class: "form-control",autofocus: true %>
+                          <%= f.text_field :amount, class: "form-control",autofocus: true %>
                         </label>
                       </section>
                     </dd>
@@ -45,6 +45,16 @@
                             </label>
                           </section>
                         </dd>
+
+                      <dt>Estimated delivery</dt>
+                      <dd>
+                        <section>
+                          <label class="input">
+                            <i class="icon-append fa fa-calendar"></i>
+                            <%= f.text_field :estimated_delivery_at , class: "hasDatepicker",autofocus: true %>
+                          </label>
+                        </section>
+                      </dd>
                 </dl>
 
                         <br>

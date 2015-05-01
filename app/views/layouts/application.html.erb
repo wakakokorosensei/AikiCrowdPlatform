@@ -30,7 +30,7 @@
   <%= render 'layouts/menu'%>
 
 
-  <%= render :partial => 'layouts/slider'  if controller_name == 'desktop' %>
+  <%= render :partial => 'layouts/slider'  if controller_name == 'desktop' && action_name == 'index'%>
 
 
     <%= yield %>
@@ -46,7 +46,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
-<script src="//cdn.ckeditor.com/4.4.7/full/ckeditor.js"></script>
+
 <script type="text/javascript">
     jQuery(document).ready(function() {
         App.init();

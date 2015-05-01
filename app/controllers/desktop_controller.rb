@@ -9,10 +9,25 @@ class DesktopController < ApplicationController
     @project = Project.all
   end
 
-  def show
+  def show_home_page
     set_from_projectid
     mcriteria = @project.pages.homepage.to_a
     @page = mcriteria.first
+    @project
+  end
+
+  def show_updates_page
+    set_from_projectid
+    @page = @project.pages.updatepage.to_a
+
+  end
+
+  def show_comments_project
+
+  end
+
+  def show_rewards_project
+
   end
 
   private

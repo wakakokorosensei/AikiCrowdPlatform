@@ -20,7 +20,7 @@
                 <% @project.rewards.each do |reward| %>
                     <tr>
                       <td><%= reward.name %></td>
-                      <td><%= reward.price %></td>
+                      <td><%= reward.amount %></td>
                       <td><%= link_to '', edit_project_reward_path(@project, reward), class: 'btn fa fa-pencil' %></td>
                       <td><i class="fa fa-trash-o"></i></td>
                     </tr>

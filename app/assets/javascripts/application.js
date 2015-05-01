@@ -22,6 +22,11 @@
 //= require js/app.js
 //= require js/plugins/owl-carousel.js
 //= require js/plugins/parallax-slider.js
+//= require js/plugins/datepicker
+//= require js/plugins/masking
+//= require plugins/sky-forms-pro/skyforms/js/jquery.maskedinput.min.js
+//= require plugins/sky-forms-pro/skyforms/js/jquery-ui.min
+//= require plugins/sky-forms-pro/skyforms/js/jquery.form.min
 //= require jquery_ujs
 //= require ckeditor/init
 //= require turbolinks

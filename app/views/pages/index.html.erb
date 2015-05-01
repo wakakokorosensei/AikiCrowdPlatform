@@ -1,29 +1,34 @@
-<h1>Listing Updates</h1>
+<%= extends :project_setup_sidebar do%>
+    <%= area :project_updates_index do%>
+        <div class="col-md-9">
 
-<table class="table table-hover">
-  <thead>
-  <tr>
-    <th>Preview</th>
-    <th>Actions</th>
-  </tr>
-  </thead>
+          <div class="panel panel-sea margin-bottom-40">
+            <div class="panel-heading">
+              <h3 class="panel-title"><i class="fa fa-edit"></i> Update list</h3>
+            </div>
+            <div class="panel-body">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th>Created at</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @project.pages.updatepage.each do |page| %>
+                    <tr>
+                      <td><%= page.created_at %></td>
+                      <td><%= link_to '', edit_project_page_path(@project, page),class: 'btn fa fa-pencil' %></td>
+                      <td><i class="fa fa-trash-o"></i></td>
+                    </tr>
+                <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <%= link_to 'New Update', new_project_page_path, class: 'btn-u' %>
+        </div>    <!--End Basic Table-->
 
-  <tbody>
-    <% @project.pages.updatepage.each do |page| %>
-      <tr>
-
-        <td><%= sanitize(truncate(strip_tags(page.content), length: 50)) %></td>
-
-        <td class="list_actions">
-            <%= link_to 'Edit', edit_project_page_path(@project, page) %>
-            <%= link_to 'Destroy', project_page_path(@project,page), method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
-      </tr>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Update', new_project_page_path %> |
-<%= link_to 'Back to projects', projects_path %>
+<% end %>

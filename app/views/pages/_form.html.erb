@@ -15,7 +15,7 @@
 <fieldset>
   <dd>
       <section>
-        <%= f.cktext_area :content, :rows => 20, :ckeditor => {:toolbar => "mini"} %>
+        <%= f.cktext_area :content, :rows => 20, :ckeditor => {:toolbar => "mini", filebrowserImageBrowseUrl: '/ckeditor/pictures', filebrowserImageUploadUrl: '/ckeditor/pictures'} %>
       </section>
   </dd>
 
