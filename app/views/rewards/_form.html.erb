@@ -51,10 +51,29 @@
                         <section>
                           <label class="input">
                             <i class="icon-append fa fa-calendar"></i>
-                            <%= f.text_field :estimated_delivery_at , class: "hasDatepicker",autofocus: true %>
+                            <input type="text" name="date">
+                            <%= f.text_field :estimated_delivery_at, class:'hasDatepicker' ,autofocus: true %>
                           </label>
                         </section>
                       </dd>
+
+                  <fieldset>
+                    <label class="label">Select date range</label>
+                    <div class="row">
+                      <section class="col col-6">
+                        <label class="input">
+                          <i class="icon-append fa fa-calendar"></i>
+                          <input type="text" name="start" id="start" placeholder="Start date">
+                        </label>
+                      </section>
+                      <section class="col col-6">
+                        <label class="input">
+                          <i class="icon-append fa fa-calendar"></i>
+                          <input type="text" name="finish" id="finish" placeholder="Expected finish date">
+                        </label>
+                      </section>
+                    </div>
+                  </fieldset>
                 </dl>
 
                         <br>
