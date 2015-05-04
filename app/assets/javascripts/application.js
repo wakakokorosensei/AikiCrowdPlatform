@@ -24,9 +24,11 @@
 //= require js/plugins/parallax-slider.js
 //= require js/plugins/datepicker
 //= require js/plugins/masking
+//= require js/plugins/validation.js
 //= require plugins/sky-forms-pro/skyforms/js/jquery.maskedinput.min.js
 //= require plugins/sky-forms-pro/skyforms/js/jquery-ui.min
 //= require plugins/sky-forms-pro/skyforms/js/jquery.form.min
+//= require plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js
 //= require jquery_ujs
 //= require ckeditor/init
 //= require turbolinks

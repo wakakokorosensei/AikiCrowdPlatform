@@ -2,7 +2,7 @@
     <%= area :project_edit_reward do%>
         <div class="col-md-9">
 
-          <%= form_for([@project, @reward], html: { method: :put, class: 'sky-form'  }) do |f|  %>
+          <%= form_for([@project, @reward], html: { method: :put, class: 'sky-form', id:'sky-form'  }) do |f|  %>
               <header>Reward</header>
               <fieldset>
                 <dl class="dl-horizontal">
@@ -45,6 +45,33 @@
                       </label>
                     </section>
                   </dd>
+
+                  <dt>Estimated delivery ESTE NO FUNCIONA COMO QUIERO</dt>
+                  <dd>
+                    <section>
+                      <label class="input">
+                        <i class="icon-append fa fa-calendar"></i>
+                        <%= f.text_field :estimated_delivery_at , class: 'hasDatepicker'%>
+                      </label>
+                    </section>
+
+                    <fieldset>
+                      <section>
+                        <label class="label">Select single date</label>
+                        <label class="input">
+                          <i class="icon-append fa fa-car"></i>
+                          <input type="text" id="date">
+                        </label>
+                      </section>
+                    </fieldset>
+                  </dd>
+
+
+
+
+
+
+
                 </dl>
 
                 <br>
