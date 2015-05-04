@@ -1,0 +1,135 @@
+<!--=== Blog Posts ===-->
+
+
+
+<div class="background-color">
+  <div class="container content-sm">
+
+    <!-- Header menu -->
+    <div clas="row">
+      <div class="col-md-8">
+        <div class="profile-body margin-bottom-20">
+          <div class="tab-v1">
+            <ul class="nav nav-justified nav-tabs">
+              <li class="active"><a data-toggle="tab" href="#campaign">Campaign</a></li>
+              <li><a data-toggle="tab" href="#updates">Updates</a></li>
+              <li><a data-toggle="tab" href="#payment">Comments</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Header menu -->
+
+
+    <div class="row">
+
+
+      <!-- Blog All Posts -->
+          <div class="col-md-8">
+            <div class="news-v3 margin-bottom-60">
+              <div class="news-v3-in">
+                <div class="tab-content">
+
+                  <!-- Campaign-->
+                  <div id="campaign" class="profile-edit tab-pane fade in active">
+                    <h2><%= @project.name%></h2>
+                    <%= @project.pages.homepage.to_a.first.content.html_safe%>
+                    <ul class="post-shares">
+                      <li>
+                        <a href="#">
+                          <i class="rounded-x icon-speech"></i>
+                          <span>26</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i class="rounded-x icon-share"></i>
+                          <span>98</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i class="rounded-x icon-heart"></i>
+                          <span>30</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- Campaign-->
+
+                  <!-- Updates-->
+                  <div id="updates" class="profile-edit tab-pane fade">
+                    <ul class="timeline-v2">
+                      <% @project.pages.updatepage.each do |update| %>
+                          <li>
+                            <time class="cbp_tmtime" datetime=""><%= update.updated_at.to_date%></time>
+                            <i class="cbp_tmicon rounded-x hidden-xs"></i>
+                            <div class="cbp_tmlabel">
+                              <h2>Our first step</h2>
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <img class="img-responsive" src="assets/img/main/img1.jpg" alt="">
+                                  <div class="md-margin-bottom-20"></div>
+                                </div>
+                                <div class="col-md-8">
+                                  <div class="row">
+                                    <p><%= update.content.html_safe %></p>
+                                  </div>
+                                  <div class="row">
+                                    <div class="timeline-footer">
+                                      <ul class="list-unstyled list-inline blog-info">
+                                        <li><i class="fa fa-comments-o"></i> <a href="#">7 Comments</a></li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+
+                              </div>
+                            </div>
+                          </li>
+                      <% end %>
+                    </ul>
+                  </div>
+
+
+                 </div>
+              </div>
+            </div>
+          </div>
+      <!-- Blog Sidebar -->
+      <div class="col-md-4">
+        <% @project.rewards.each do |reward| %>
+            <div class="row margin-bottom-40 pricing-light">
+              <div class="col-md-10">
+                  <div class="pricing hover-effect">
+                    <%if reward.has_bonus? %>
+                        <div class="sticker-right">Bonus</div>
+                    <%end%>
+                        <div class="pricing-head">
+                         <h2><%=reward.name%></h2>
+                          <h2><i>$</i><%=reward.amount%></h2>
+                        </div>
+                        <ul class="pricing-content list-unstyled">
+                          <li><%=reward.description%></li>
+                          <li><i class="fa fa-angellist"></i>Taken <%=reward.taken%> from  <%=reward.maximum_backers%><span></span></li>
+                          <li><i class="fa fa-send"></i>Estimated delivery <%=reward.estimated_delivery_at%><span></span></li>
+                          <li><i class="fa fa-"></i>Shipping details <span></span></li>
+                        </ul>
+                        <div class="pricing-footer">
+                          <%= link_to  project_reward_path(@project, reward), class: 'btn-u' do %>
+                              <%= content_tag(:i, '', class: 'fa fa-angellist') %>
+                              <%= content_tag(:t, ' Contribute') %>
+                          <% end %>
+
+                        </div>
+                  </div>
+              </div>
+            </div>
+        <%end%>
+      </div><!-- End Blog Sidebar -->
+    </div>
+  </div>
+</div><!--=== End Blog Posts ===-->
+
+
