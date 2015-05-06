@@ -24,36 +24,36 @@
             <li class="list-group-item">
               <%= link_to edit_project_path(@project) do %>
                   <%= content_tag(:i, '', class: 'fa fa-cubes') %>
-                  <%= content_tag(:t, ' Project Profile') %>
+                  <%= content_tag(:t, ' Profile') %>
               <% end %>
 
             </li>
 
             <li class="list-group-item">
                 <%= link_to  edit_project_page_path(@project, 'home') do %>
-                    <%= content_tag(:i, '', class: 'fa fa-history') %>
-                    <%= content_tag(:t, ' Home page') %>
+                    <%= content_tag(:i, '', class: 'fa fa-home') %>
+                    <%= content_tag(:t, ' Home') %>
                 <% end %>
             </li>
 
             <li class="list-group-item">
               <%= link_to  project_pages_path(@project) do %>
                   <%= content_tag(:i, '', class: 'fa fa-folder-open') %>
-                  <%= content_tag(:t, ' Project Updates') %>
+                  <%= content_tag(:t, ' Updates') %>
               <% end %>
             </li>
 
             <li class="list-group-item">
-              <%= link_to  new_project_comment_path(@project) do %>
+              <%= link_to  project_comments_path(@project) do %>
                   <%= content_tag(:i, '', class: 'fa fa-comments') %>
-                  <%= content_tag(:t, ' Project Comments') %>
+                  <%= content_tag(:t, ' Comments') %>
               <% end %>
             </li>
 
             <li class="list-group-item">
               <%= link_to  project_rewards_path(@project) do %>
-                  <%= content_tag(:i, '', class: 'fa fa-comments') %>
-                  <%= content_tag(:t, ' Project Rewards') %>
+                  <%= content_tag(:i, '', class: 'fa fa-money') %>
+                  <%= content_tag(:t, ' Rewards') %>
               <% end %>
             </li>
 
@@ -70,8 +70,8 @@
         <!-- End Sidebar Menu -->
         <%= area :project_profile%>
         <%= area :project_page_home %>
-        <%= area :project_setup_comments %> <!-- Este caso sirve si permito que el user pueda editar los comentariaos  -->
-        <%= area :project_comments_index %>
+        <%= area :project_setup_comments %>
+        <%= area :project_comments_index %><!-- Este caso sirve si permito que el user pueda editar los comentariaos  -->
         <%= area :project_updates_index %>
         <%= area :project_rewards_index %>
         <%= area :project_reward %>

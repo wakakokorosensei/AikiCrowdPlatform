@@ -1,20 +1,37 @@
-<p id="notice"><%= notice %></p>
-
 <% if @project.comments.size > 0 %>
-    <h2>Comments</h2>
-    <% for comment in @project.comments %>
-        <h3><%= comment.username %></h3>
-        <p><%= comment.content %></p>
-    <% end %>
+    <div class="panel panel-profile">
+      <div class="panel-heading overflow-h">
+        <a href="#"><i class="fa fa-cog pull-right"></i></a>
+      </div>
+      <div class="panel-body">
+        <% for comment in @project.comments %>
+            <div class="media media-v2">
+              <a class="pull-left" href="#">
+                <img class="media-object rounded-x" src="assets/img/testimonials/img2.jpg" alt="">
+              </a>
+              <div class="media-body">
+                <h4 class="media-heading">
+                  <strong><a> <%= comment.username %></a></strong>
+
+                  <small class="pull-right">About an hour ago</small>
+
+                </h4>
+                <p>
+                  <%= comment.content %>
+                </p>
+                <ul class="list-inline results-list pull-left">
+                  <li><a href="#">100 Likes</a></li>
+                  <li><a href="#">10 Share</a></li>
+                </ul>
+                <ul class="list-inline pull-right">
+                  <li><a href="#"><i class="expand-list rounded-x fa fa-reply"></i></a></li>
+                  <li><a href="#"><i class="expand-list rounded-x fa fa-heart"></i></a></li>
+                  <li><a href="#"><i class="expand-list rounded-x fa fa-retweet"></i></a></li>
+                </ul>
+              </div>
+            </div><!--/end media media v2-->
+        <% end %>
+        <button type="button" class="btn-u btn-u-default btn-block">Load More</button>
+      </div>
+    </div>
 <% end %>
-
-<h2>New Comment</h2>
-
-<%= form_for [@project, Comment.new] do |f| %>
-
-    <p><%= f.text_area :content, :rows => 10 %></p>
-    <p><%= f.submit %></p>
-<% end %>
-
-
-<%= link_to 'Back', project_comments_path %>

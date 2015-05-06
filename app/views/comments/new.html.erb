@@ -1,7 +1,9 @@
-<%= render 'layouts/navproject' %>
-<%= render 'layouts/rewardsidebar' %>
-
-
-<%= render 'form' %>
+<%= extends :project_setup_sidebar do%>
+    <%= area :project_setup_comments do%>
+        <div class="col-md-9">
+            <%= render 'form' %>
+        </div>
+    <% end %>
+<% end %>
 
 

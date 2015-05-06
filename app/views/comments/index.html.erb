@@ -10,7 +10,8 @@
                 <table class="table">
                   <thead>
                   <tr>
-                    <th>Username</th>
+                    <th>Date</th>
+                    <th>User</th>
                     <th>Content</th>
                     <th>Edit</th>
                     <th>Delete</th>
@@ -19,16 +20,18 @@
                   <tbody>
                   <% @project.comments.each do |comment| %>
                   <tr>
+                    <td><%= comment.created_at.to_date%></td>
                     <td><%= comment.username %></td>
                     <td><%= comment.content %></td>
-                    <td>@mdo</td>
-                    <td><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</button></td>
+                    <td><%= link_to '', edit_project_comment_path(@project, comment),class: 'btn fa fa-reply' %></td>
+                    <td><i class="fa fa-trash-o"></i></td>
                   </tr>
                   <% end %>
                   </tbody>
                 </table>
               </div>
             </div>
+          <%= link_to 'New comment', new_project_comment_path(@project), class: 'btn-u' %>
         </div>    <!--End Basic Table-->
     <% end %>
 <% end %>

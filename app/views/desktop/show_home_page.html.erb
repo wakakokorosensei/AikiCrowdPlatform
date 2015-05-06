@@ -5,15 +5,18 @@
 <div class="background-color">
   <div class="container content-sm">
 
+
+
     <!-- Header menu -->
     <div clas="row">
       <div class="col-md-8">
+
         <div class="profile-body margin-bottom-20">
-          <div class="tab-v1">
+          <div class="tab-v3">
             <ul class="nav nav-justified nav-tabs">
               <li class="active"><a data-toggle="tab" href="#campaign">Campaign</a></li>
               <li><a data-toggle="tab" href="#updates">Updates</a></li>
-              <li><a data-toggle="tab" href="#payment">Comments</a></li>
+              <li><a data-toggle="tab" href="#comments">Comments</a></li>
             </ul>
           </div>
         </div>
@@ -91,6 +94,70 @@
                       <% end %>
                     </ul>
                   </div>
+                  <!-- Updates-->
+
+                  <!-- Comments-->
+                  <div id="comments" class="profile-edit tab-pane fade">
+
+                    <%= form_for([@project, @project.comments.new], html: { method: :post, class: 'sky-form'  }) do |f|  %>
+
+                        <fieldset>
+                          <dl class="dl-horizontal">
+                            <dt>Post your comment</dt>
+                            <dd>
+                              <section>
+                                <label class="textarea textarea-resizable">
+                                  <%= f.text_area :content, class: 'form-control', placeholder: 'Put your comment here'%>
+                                </label>
+                              </section>
+                            </dd>
+
+
+                            <br>
+
+                            <button class="btn-u" type="submit">Save comment</button>
+
+                          </dl>
+                        </fieldset>
+                    <% end %>
+
+
+                    <% @project.comments.each do |comment| %>
+
+                        <div class="panel panel-profile">
+
+                          <div class="panel-body">
+                            <div class="media media-v2">
+                              <a class="pull-left" href="#">
+                                <%= image_tag('img2.jpg', class: 'media-object rounded-x') %>
+                              </a>
+                              <div class="media-body">
+                                <h4 class="media-heading">
+                                  <strong><a> <%= comment.username %></a></strong>
+
+                                  <small class="pull-right"><%= comment.created_at %></small>
+
+                                </h4>
+                                <p>
+                                  <%= comment.content %>
+                                </p>
+                                <ul class="list-inline results-list pull-left">
+                                  <li><a href="#">25 Likes</a></li>
+                                  <li><a href="#">10 Share</a></li>
+                                </ul>
+                                <ul class="list-inline pull-right">
+                                  <li><a href="#"><i class="expand-list rounded-x fa fa-reply"></i></a></li>
+                                  <li><a href="#"><i class="expand-list rounded-x fa fa-like"></i></a></li>
+                                </ul>
+                              </div>
+                            </div><!--/end media media v2-->
+                          </div>
+                        </div>
+                    <% end %>
+                    <button type="button" class="btn-u btn-u-default btn-block">Load More</button>
+                  </div>
+
+                  <!-- Comments-->
 
 
                  </div>

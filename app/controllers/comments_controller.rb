@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :edit, :update, :destroy, :new, :create, :index]
+  before_action :set_comment, only: [:show, :edit, :update, :destroy, :new, :create, :index, :backers_comments]
   before_filter :authenticate_user!
 
 
@@ -58,6 +58,15 @@ class CommentsController < ApplicationController
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # Esta action sirve para visualizar la lista de los comentarios y para poder isertar un comentario desde esa pagina
+  def backers_comments
+    @comment = @project.comments.new
+   respond_to do |format|
+     format.html
+     format.js
+   end
   end
 
   # DELETE /comments/1

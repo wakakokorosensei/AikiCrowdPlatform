@@ -1,8 +1,10 @@
-class DesktopController < ApplicationController
 =begin
   Este controller se encarga de lo que se refiere a la
   visualizacion generica de la plataforma
 =end
+class DesktopController < ApplicationController
+
+  before_filter :authenticate_user!,  only: []
 
   # Busca todos los proyectos presentes en la plataforma
   def index
@@ -24,6 +26,15 @@ class DesktopController < ApplicationController
 
   def show_comments_project
 
+  end
+
+  # Esta action sirve para visualizar la lista de los comentarios y para poder isertar un comentario desde esa pagina
+  def backer_comment
+    @comment = @project.comments.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show_rewards_project

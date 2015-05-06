@@ -18,7 +18,7 @@
                 <tbody>
                 <% @project.pages.updatepage.each do |page| %>
                     <tr>
-                      <td><%= page.created_at %></td>
+                      <td><%= page.created_at.to_date %></td>
                       <td><%= link_to '', edit_project_page_path(@project, page),class: 'btn fa fa-pencil' %></td>
                       <td><i class="fa fa-trash-o"></i></td>
                     </tr>
